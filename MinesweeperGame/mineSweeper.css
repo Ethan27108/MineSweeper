@@ -1,0 +1,103 @@
+button{
+    width:25px; /* 50 px is only indicative, it may be any size */
+    height:25px;/* 50 px is only indicative, it may be any size */
+}
+#starter{
+    padding: 0px; /* must be adjusted later */
+    width:75px; /* 50 px is only indicative, it may be any size */
+    height:25px;/* 50 px is only indicative, it may be any size */
+    border-radius: 25%;
+    border-color: gray;
+}
+#powerup{
+    padding: 0px; /* must be adjusted later */
+    width:75px; /* 50 px is only indicative, it may be any size */
+    height:25px;/* 50 px is only indicative, it may be any size */
+    border-radius: 25%;
+    border-color: gray;
+}
+#powerup2{
+    padding: 0px; /* must be adjusted later */
+    width:75px; /* 50 px is only indicative, it may be any size */
+    height:25px;/* 50 px is only indicative, it may be any size */
+    border-radius: 25%;
+    border-color: gray;
+}
+#powerup3{
+    padding: 0px; /* must be adjusted later */
+    width:75px; /* 50 px is only indicative, it may be any size */
+    height:25px;/* 50 px is only indicative, it may be any size */
+    border-radius: 25%;
+    border-color: gray;
+}
+.centered-div {
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+  }
+#myTable {
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    position: absolute; 
+    left: 13%;  
+    top: 10%;  
+  }
+#clicked{
+    background-color: #e1c699
+}
+#unclicked{
+    background-color: #00ff00
+}
+
+#content-container {
+text-align: left;
+}
+
+#rules-box {
+width: 400px; /* Adjust the width as needed */
+margin: 20px auto;
+padding: 10px;
+background-color: #f0f0f0;
+border: 1px solid #ccc;
+border-radius: 5%;
+position: absolute;
+left: 60%;
+
+
+}
+
+#rules-box p {
+font-weight: bold;
+}
+
+#rules-box ul {
+list-style-type: none;
+padding: 0;
+}
+
+#rules-box li {
+margin-bottom: 5px;
+}
+body {
+    background: linear-gradient(290deg, #27636b, #45e067, #199ed3, #5b69eb);
+    background-size: 80000% 80000%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
+#flagged {
+    background-color: #00ff00;
+    color: red; /* Set the text color to red for flagged buttons */
+}

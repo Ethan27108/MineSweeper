@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title>Minesweeper</title>
+  <link rel="stylesheet" type="text/css" href="mineSweeper.css">
+  <script type="text/javascript" src="mineSweeper.js"></script>
+</head>
+<body>
+  <div class="centered-div">
+    <button id="starter" type="button" onclick="setEasy()">Easy</button>
+    <button id="starter" type="button" onclick="setMed()">Medium</button>
+    <button id="starter" type="button" onclick="setHard()">Hard</button>
+    <button id="powerup" type="button" onclick="spotterPowerup()">Spotter 0/3</button>
+    <button id="powerup2" type="button" onclick="gridPowerup()">Grid 0/3</button>
+    <button id="powerup3" type="button" onclick="shieldPowerup()">Shield 0/3</button>
+  </div>
+
+  <br>
+  
+  <div id="content-container">
+    <table id="myTable"></table>
+  
+    <div id="rules-box">
+      <p>Rules:</p>
+      <ul>
+        <li>Click on a cell to reveal its content</li>
+        <li>Use right-click to flag a cell as a mine</li>
+        <li>Complete the game by flagging all mines</li>
+        <br>
+        <li>Power-Ups:</li>
+        <li>  Spotter: For one click it will tell you the value of what you click on</li>
+        <li>  Grid: For one click surroudning the click making a 3x3 area tells you how many mines are in the 3x3</li>
+        <li>  Shield: For one click if you click on a mine will tell you and save you from death</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
