@@ -7,7 +7,7 @@ let oneGameOn = false;
 let currentDate;
 let timestart;
 
-
+//This sets the difficulty to easy by stating the default variables like the size and mineamount and then creates the mine field
 function setEasy(){
     if (oneGameOn==false){
         currentDate = new Date();
@@ -28,6 +28,8 @@ function setEasy(){
         oneGameOn = true;
     }
 }
+
+//This sets the difficulty to medium by stating the default variables like the size and mineamount and then creates the mine field
 function setMed(){
     if (oneGameOn==false){
         currentDate = new Date();
@@ -45,6 +47,8 @@ function setMed(){
         oneGameOn = true;
     }
 }
+
+//This sets the difficulty to hard by stating the default variables like the size and mineamount and then creates the mine field
 function setHard(){
     if (oneGameOn==false){
         currentDate = new Date();
@@ -63,6 +67,8 @@ function setHard(){
     }
 
 }
+
+//This sets some base variables that all need for the three different power ups for this case its spotter and it keeps track of how many have been used and doesnt allow you to use it if u have used 3 of them
 let triggered =0;
 let spotter=false;
 function spotterPowerup(){
@@ -81,6 +87,8 @@ function spotterPowerup(){
     }
     
 }
+
+//This sets some base variables that all need for the three different power ups for this case its grid and it keeps track of how many have been used and doesnt allow you to use it if u have used 3 of them
 let triggered2 =0;
 let grid=false;
 function gridPowerup(){
@@ -99,6 +107,8 @@ function gridPowerup(){
     }
     
 }
+
+//This sets some base variables that all need for the three different power ups for this case its shield and it keeps track of how many have been used and doesnt allow you to use it if u have used 3 of them
 let triggered3 =0;
 let shield=false;
 function shieldPowerup(){
@@ -126,6 +136,8 @@ function createBaseArr(){
         }
       }
 }
+
+//counts the mines in the two dimensional array to make sure it the correct amount if not it will add more mines
 function countMines() {
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
@@ -146,6 +158,7 @@ function countMines() {
     }
 }
 
+// Changes everything that isnt a mine to the correct number this is done by looking at all adjacent spaces and seeing if its a mine
 function clearAllBlank(i, j) {
     if (i < 0 || i >= row || j < 0 || j >= col || arr[i][j] !== 0) {
         return false; // Exit if out of bounds or not a blank space
@@ -182,7 +195,7 @@ function clearAllBlank(i, j) {
 
 
 
-
+// This is the main function that runs on loop and it used to decide what to do when events happen such as mouse clicks or right clicks
 function change(){
   let counting=0;
   let flagged=0;
@@ -197,7 +210,9 @@ function change(){
             const button = document.createElement("button");
             button.innerHTML = " ";
             button.id="unclicked";
+            //Looks for left clicks and then will check if any powerups are chosen to be used
             button.addEventListener("click", function() {
+                //Checks for spotter and if active will use it
                 if (spotter==true){
                     spotter = false;
                     if (arr[i][j]==-1){
@@ -206,7 +221,7 @@ function change(){
                     else{
                         alert("This space is "+arr[i][j]);
                     }
-                    
+                 //Checks for grid pwoerup and if its active will use it   
                 }else {
                     if (grid==true){
                         let gridcount=0;
@@ -222,7 +237,7 @@ function change(){
                         }
                         alert('In the 3x3 area there is '+gridcount+' mines')
                     }
-                    
+                    // Checks to see if you hit a mine if you did and there is a shield it saves you otherwise you lose
                     else if (arr[i][j]==-1){
                         if (shield==true){
                             alert("That was a mine the shield saved you!");
@@ -249,6 +264,7 @@ function change(){
                         
     
                   }
+                    // If its a blank space it will cascade and show all of the blank around it and then a layer of numbers
                   else if (arr[i][j]==0){
                     while (true){
                         button.innerHTML = arr[i][j];
@@ -274,14 +290,17 @@ function change(){
                 }
                 
             });
+            //Checks for a right click to start to set a flag
             button.addEventListener("contextmenu", function(event) {
                 event.preventDefault();
+                //if its a mine it will add 1 to the count so it can check if u have flagged all the mines
                 if ((arr[i][j]==0)&&(button.innerHTML!="|&gt;")){
                     button.innerHTML = "|>";
                     flagged +=1;
                     button.id="flagged";
 
                 }
+                //Will lower the amount flagged if you click on something not a mine so that you cantr just flag everything and win
                 else if ((arr[i][j]==0)){
                     button.innerHTML = " ";
                     flagged -=1;
@@ -293,6 +312,7 @@ function change(){
                 else if (button.innerHTML==-2){
                     ;
                 }
+                    //Check if its not a mine and not flagged if so it will add a flag
                 else if ((arr[i][j]==-1)&&(button.innerHTML!="|&gt;")&&(flagged<mineAmount)){
                   counting+=1;
                   button.innerHTML = "|>";
@@ -300,6 +320,7 @@ function change(){
                   button.id="flagged";
 
                 }
+                    //If it is a mine then it will unflag it and take away from the count
                 else if (arr[i][j]==-1){
                   counting-=1;
                   button.innerHTML = " ";
@@ -307,6 +328,7 @@ function change(){
                   button.id="unclicked";
 
                 }
+                    if its a normal flag then it just gets rid and resets the values
                 else if (button.innerHTML=="|&gt;"){
                   button.innerHTML = " ";
                   flagged -=1;
@@ -317,6 +339,7 @@ function change(){
                   flagged +=1;
                   button.id="flagged";
                 }
+                //If you get the right amount of mines flagged then you will win and it will set it up to restart the game
                 if (counting==mineAmount){
                     let newdate = new Date();
                     let timeend = newdate.getTime();
@@ -344,7 +367,7 @@ function change(){
     }
     }
 
-
+// This will add all of the mines to the two dimensional array
 function addMines(row,col,mineAmount,minepercent){
     let rowCont=0;
     count=0;
