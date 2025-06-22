@@ -1,6 +1,6 @@
 # Minesweeper
 
-This project is a Minesweeper game implemented in JavaScript. The game allows users to select different difficulties and use power-ups to assist in clearing the minefield.
+This project is a Minesweeper game implemented in JavaScript. The game allows users to select different difficulties and use power-ups to assist in clearing the minefields.
 
 ## Requirements
 
